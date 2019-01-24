@@ -1,6 +1,3 @@
-import bitmex
-import time
-
 # Can open and close orders using prediction from the Strategy class
 class Trader:
     def __init__(self, client, strategy, money_to_trade=100, leverage=5):
