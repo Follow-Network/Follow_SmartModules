@@ -1,4 +1,4 @@
-from FollowSM.strategies.bitmex_MACD import Strategy
+from FollowSM.strategies.bitmex_MACD import Strategy, StrategyMACD
 
 
 class Analyzer:
@@ -7,6 +7,6 @@ class Analyzer:
         self.strategy = None
 
     def choose_strategy(self):
-        self.strategy = Strategy(self.client, timeframe='1h')
+        self.strategy = StrategyMACD(self.client, timeframe='1h')
         print("MACD strategy was chosen")
         return self.strategy

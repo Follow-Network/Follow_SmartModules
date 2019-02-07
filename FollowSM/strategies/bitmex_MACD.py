@@ -2,8 +2,13 @@ import talib
 import pandas as pd
 
 
-# Uses macd from talib library
 class Strategy:
+    def predict(self) -> int:
+        raise NotImplementedError
+
+
+# Uses macd from talib library
+class StrategyMACD(Strategy):
     def __init__(self, client, timeframe='1h'):
         self.client = client
         self.timeframe = timeframe
@@ -12,7 +17,7 @@ class Strategy:
     # "1" to bye
     # "-1" to sell
     # "0" to ignore
-    def predict(self):
+    def predict(self) -> int:
         # Getting {count} candles during timeframe and creating a dataframe
         ohlcv_candles = pd.DataFrame(self.client.Trade.Trade_getBucketed(
             binSize=self.timeframe,

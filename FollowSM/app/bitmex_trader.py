@@ -6,7 +6,7 @@ class Trader:
     def __init__(self, client, strategy_stoploss="", money_to_trade=100, leverage=5, pair="XBTUSD"):
         # Client is a bitmex object with user's keys
         self.client = client
-        self.strategy = None
+        self.strategy = None  # It will be set by analyzer
         self.money_to_trade = money_to_trade
         self.leverage = leverage
         self.pair = pair
