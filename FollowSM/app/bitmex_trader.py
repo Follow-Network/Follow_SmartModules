@@ -15,12 +15,11 @@ class Trader:
     # Check all open orders on the account
     def get_data(self):
         result = self.client.OrderBook.OrderBook_getL2(symbol=self.pair).result()
-        print(result)
-        return 1
+        return result
 
     def get_strategy(self):
         analyzer = Analyzer(self.client)
-        self.strategy = analyzer.choose_strategy()
+        self.strategy = analyzer.choose_strategy(self.get_data())
 
     # Get list of all pairs on the exchange
     def check_pairs(self):

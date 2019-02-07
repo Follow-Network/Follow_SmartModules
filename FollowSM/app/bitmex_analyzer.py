@@ -6,7 +6,7 @@ class Analyzer:
         self.client = client
         self.strategy = None
 
-    def choose_strategy(self):
+    def choose_strategy(self, data):
         self.strategy = StrategyMACD(self.client, timeframe='1h')
         print("MACD strategy was chosen")
         return self.strategy

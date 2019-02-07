@@ -13,6 +13,7 @@ def main():
     time_to_wait_new_trade = 60*30
 
     trader = Trader(client)
+    trader.get_strategy()
     # print(trader.get_data())
 
     print("Decision-making time:")
@@ -21,8 +22,8 @@ def main():
 
     while True:
         if round(time.time()) % time_to_wait_new_trade == 0:
-            print(trader.execute_trade())
             print(time.ctime(time.time()))
+            print(trader.execute_trade())
             time.sleep(10)
 
 

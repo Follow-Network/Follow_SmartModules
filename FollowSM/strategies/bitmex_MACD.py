@@ -22,7 +22,7 @@ class StrategyMACD(Strategy):
         ohlcv_candles = pd.DataFrame(self.client.Trade.Trade_getBucketed(
             binSize=self.timeframe,
             symbol='XBTUSD',
-            count=100,
+            count=750,
             reverse=True
         ).result()[0])
         ohlcv_candles.set_index(['timestamp'], inplace=True)
@@ -37,3 +37,11 @@ class StrategyMACD(Strategy):
         # Not clear, goto next
         else:
             return 0
+
+
+class StrategyRSI(Strategy):
+    def __init__(self):
+        pass
+
+    def predict(self):
+        pass
