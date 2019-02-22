@@ -28,6 +28,7 @@ class StrategyMACD(Strategy):
         ohlcv_candles.set_index(['timestamp'], inplace=True)
         # fastperiod=8, slowperiod=28, signalperiod=9
         macd, signal, hist = talib.MACD(ohlcv_candles.close.values, fastperiod=8, slowperiod=28, signalperiod=9)
+        print(hist)
         # Sell
         if hist[-1] < 0 < hist[-2]:
             return -1
@@ -40,8 +41,24 @@ class StrategyMACD(Strategy):
 
 
 class StrategyRSI(Strategy):
-    def __init__(self):
-        pass
+    def __init__(self, client, timeframe='1h'):
+        self.client = client
+        self.timeframe = timeframe
 
     def predict(self):
-        pass
+        ohlcv_candles = pd.DataFrame(self.client.Trade.Trade_getBucketed(
+            binSize=self.timeframe,
+            symbol='XBTUSD',
+            count=750,
+            reverse=True
+        ).result()[0])
+        ohlcv_candles.set_index(['timestamp'], inplace=True)
+        rsi = talib.RSI(ohlcv_candles.close.values, timeperiod=14)
+        print(rsi)
+        # Sell
+        if rsi[-2] < 30 and rsi[-1] > 30:
+            return -1
+        elif rsi[-2] > 70 and rsi[-1] < 70:
+            return 1
+        else:
+            return 0

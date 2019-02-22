@@ -14,8 +14,9 @@ class Trader:
 
     # Check all open orders on the account
     def get_data(self):
-        result = self.client.OrderBook.OrderBook_getL2(symbol=self.pair).result()
-        return result
+        # result = self.client.OrderBook.OrderBook_getL2(symbol=self.pair).result()
+        result = self.client.User.User_getWallet(currency='XBt').result()
+        return result[0].get('deposited')
 
     def get_strategy(self):
         analyzer = Analyzer(self.client)
