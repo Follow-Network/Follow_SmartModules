@@ -24,9 +24,12 @@ def main():
     trader.get_strategy()
     print(trader.get_data())
 
-    print("Decision-making time:")
+    print("Decision-making time:", end='')
     print(time.ctime(time.time()))
-    print(trader.execute_trade())
+    # trader.try_order()
+    # trader.try_order()
+    trader.stoploss()
+    # print(trader.execute_trade())
 
     # cycle(trader, time_to_wait_new_trade)
 
