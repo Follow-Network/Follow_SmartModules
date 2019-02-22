@@ -56,9 +56,9 @@ class StrategyRSI(Strategy):
         rsi = talib.RSI(ohlcv_candles.close.values, timeperiod=14)
         print(rsi)
         # Sell
-        if rsi[-2] < 30 and rsi[-1] > 30:
+        if rsi[-2] > 70 > rsi[-1]:
             return -1
-        elif rsi[-2] > 70 and rsi[-1] < 70:
+        elif rsi[-2] < 30 < rsi[-1]:
             return 1
         else:
             return 0
