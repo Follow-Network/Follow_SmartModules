@@ -15,8 +15,8 @@ def cycle(trader, time_to_wait_new_trade):
 def main():
     client = bitmex.bitmex(
         test=True,  # Use testnet
-        api_key="vPa4Ae_LsMnoZVwCH0784wIV",
-        api_secret="KBcPfBBQa3WeU5sNe3SM197iys9kL8J2z82XFRihdSEE92xZ"
+        api_key="",
+        api_secret=""
     )
     time_to_wait_new_trade = 60*30
 
